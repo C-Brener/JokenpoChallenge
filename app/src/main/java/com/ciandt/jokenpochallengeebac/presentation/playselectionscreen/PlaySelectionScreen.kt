@@ -1,14 +1,14 @@
 package com.ciandt.jokenpochallengeebac.presentation.playselectionscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import com.ciandt.jokenpochallengeebac.R
-import com.ciandt.jokenpochallengeebac.databinding.ActivityMainBinding
 import com.ciandt.jokenpochallengeebac.databinding.ActivityPlaySelectionScreenBinding
-import com.google.android.material.snackbar.Snackbar
+import com.ciandt.jokenpochallengeebac.presentation.result.ResultActivity
 
 class PlaySelectionScreen : AppCompatActivity() {
     private lateinit var binding: ActivityPlaySelectionScreenBinding
@@ -17,8 +17,16 @@ class PlaySelectionScreen : AppCompatActivity() {
         binding = ActivityPlaySelectionScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         spinner()
-        bottomNavigationMovement()
+        setupClickListener()
+    }
 
+    private fun setupClickListener() {
+        with(binding) {
+            bottomNavigation.setOnItemSelectedListener {
+                bottomNavigationMovement(it)
+                true
+            }
+        }
     }
 
     private fun spinner() {
@@ -33,26 +41,24 @@ class PlaySelectionScreen : AppCompatActivity() {
         }
     }
 
-    private fun bottomNavigationMovement() {
-        val bottomNavigationView = binding.bottomNavigation
-
-        bottomNavigationView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.player_one -> {
-                    navigationIntent()
-                    true
-                }
-                else -> {
-                    Snackbar.make(binding.root, "Result Screen", Snackbar.LENGTH_SHORT).show()
-                    true
-                }
+    private fun bottomNavigationMovement(it: MenuItem) {
+        when (it.itemId) {
+            R.id.player_one -> {
+                playScreenStart()
             }
-
+            R.id.result -> {
+                resultScreenStart()
+            }
         }
     }
 
-    private fun navigationIntent() {
+    private fun playScreenStart() {
         val intent = Intent(this, PlaySelectionScreen::class.java)
         startActivity(intent)
+    }
+
+    private fun resultScreenStart(){
+        val intent2 = Intent(this, ResultActivity::class.java)
+        startActivity(intent2)
     }
 }

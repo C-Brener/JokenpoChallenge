@@ -7,6 +7,8 @@
     <string name="select_movement">Selecionar jogada</string>
     <string name="jogador_1">Jogador 1</string>
     <string name="resulted">Resulted</string>
+    <string name="resultado">RESULTADO</string>
+    <string name="o_jogador_xxx">O jogador xxx \n ganhou</string>
     <string-array name="jogadas">
         <item>Selecionar Jogada</item>
         <item>Pedra</item>
