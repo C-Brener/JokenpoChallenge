@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10326086956521739" />
+        <entry key="app/src/main/res/layout/activity_play_selection_screen.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.10555555555555556" />
       </map>
     </option>
   </component>

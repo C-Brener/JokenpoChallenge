@@ -3,4 +3,14 @@
     <string name="app_name_initial_screen">Jokenpô</string>
     <string name="welcome_text">Bem vindo ao Jokenpô</string>
     <string name="start_game">Start Game</string>
+    <string name="player_one">Player One</string>
+    <string name="select_movement">Selecionar jogada</string>
+    <string name="jogador_1">Jogador 1</string>
+    <string name="resulted">Resulted</string>
+    <string-array name="jogadas">
+        <item>Selecionar Jogada</item>
+        <item>Pedra</item>
+        <item>Papel</item>
+        <item>Tesoura</item>
+    </string-array>
 </resources>
