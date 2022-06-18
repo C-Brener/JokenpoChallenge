@@ -96,7 +96,11 @@ class ResultActivity : AppCompatActivity() {
                     true
                 }
                 else -> {
-                    resultScreenStart()
+                    Snackbar.make(
+                        binding.root,
+                        "Você está na tela selecionada",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                     true
                 }
             }

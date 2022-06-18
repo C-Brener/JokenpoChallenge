@@ -6,7 +6,7 @@
         />
     <item
         android:id="@+id/result_navigation_drawer"
-        android:title="@string/home"
+        android:title="@string/resulted"
         />
 
 

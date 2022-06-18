@@ -7,21 +7,30 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.ciandt.jokenpochallengeebac.R
 import com.ciandt.jokenpochallengeebac.databinding.ActivityPlaySelectionScreenBinding
 import com.ciandt.jokenpochallengeebac.presentation.initialscreen.MainActivity
 import com.ciandt.jokenpochallengeebac.presentation.result.ResultActivity
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
 class PlaySelectionScreen : AppCompatActivity() {
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navDrawerLayout: NavigationView
     private lateinit var binding: ActivityPlaySelectionScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlaySelectionScreenBinding.inflate(layoutInflater)
+        drawerLayout = binding.root
+        navDrawerLayout = binding.navigationViewSelectionScreen
         setContentView(binding.root)
         spinner()
         setupClickListener()
         setSupportActionBar(binding.toolbar)
+        setupToolBar()
+        setupDrawer()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -39,6 +48,11 @@ class PlaySelectionScreen : AppCompatActivity() {
                 false
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        drawerLayout.openDrawer(GravityCompat.START)
+        return true
     }
 
     private fun setupClickListener() {
@@ -81,5 +95,31 @@ class PlaySelectionScreen : AppCompatActivity() {
     private fun resultScreenStart() {
         val intent2 = Intent(this, ResultActivity::class.java)
         startActivity(intent2)
+    }
+
+    private fun setupToolBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_menu)
+    }
+
+    private fun setupDrawer() {
+        navDrawerLayout.setNavigationItemSelectedListener { menuItem ->
+            drawerLayout.closeDrawers()
+            when (menuItem.itemId) {
+                R.id.player_one_navigation_drawer -> {
+                    Snackbar.make(
+                        binding.root,
+                        "Você está na tela selecionada",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+                else -> {
+                    resultScreenStart()
+                    true
+                }
+            }
+
+        }
     }
 }
