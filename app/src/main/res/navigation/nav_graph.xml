@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initialScreen">
+
+    <fragment
+        android:id="@+id/initialScreen"
+        android:name="com.ciandt.jokenpochallengeebac.presentation.initialscreen.InitialScreen"
+        android:label="Jokenpo"
+        tools:layout="@layout/fragment_initial_screen">
+        <action
+            android:id="@+id/action_initialScreen_to_navigation"
+            app:destination="@id/navigation" />
+    </fragment>
+    <navigation
+        android:id="@+id/navigation"
+        app:startDestination="@id/playSelectionFragment">
+        <fragment
+            android:id="@+id/resultFragment"
+            android:name="com.ciandt.jokenpochallengeebac.presentation.result.ResultFragment"
+            android:label="Result Screen"
+            tools:layout="@layout/fragment_result" />
+        <fragment
+            android:id="@+id/playSelectionFragment"
+            android:name="com.ciandt.jokenpochallengeebac.presentation.playselectionscreen.PlaySelectionFragment"
+            android:label="Play Screen"
+            tools:layout="@layout/fragment_play_selection_screen" >
+            <action
+                android:id="@+id/action_playSelectionFragment_to_resultFragment"
+                app:destination="@id/resultFragment" />
+        </fragment>
+    </navigation>
+</navigation>

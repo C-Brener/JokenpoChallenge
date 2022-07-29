@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_style.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/style.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10326086956521739" />
         <entry key="app/src/main/res/layout/activity_play_selection_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_result.xml" value="0.2111111111111111" />
+        <entry key="app/src/main/res/layout/fragment_initial_screen.xml" value="0.24322916666666666" />
+        <entry key="app/src/main/res/layout/fragment_play_selection_screen.xml" value="0.14673913043478262" />
+        <entry key="app/src/main/res/layout/fragment_result.xml" value="0.1" />
         <entry key="app/src/main/res/layout/menu_header.xml" value="0.2390625" />
+        <entry key="app/src/main/res/menu/actionbar_menu.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/menu/actionbar_meu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/menu/menu_navigation_drawer.xml" value="0.24010416666666667" />
