@@ -1,6 +1,8 @@
 package com.ciandt.jokenpochallengeebac
 
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -10,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.ciandt.jokenpochallengeebac.databinding.ActivityMainBinding
+import com.ciandt.jokenpochallengeebac.presentation.playselectionscreen.TAG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -76,4 +79,33 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        outState.putString("State","Texto")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG,"Passou pelo estado de resume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG,"Passou pelo estado de pause")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG,"Passou pelo estado de Stop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG,"Passou pelo estado de Destroy")
+
+    }
+
 }

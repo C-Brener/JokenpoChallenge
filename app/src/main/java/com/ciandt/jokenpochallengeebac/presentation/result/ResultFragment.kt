@@ -1,12 +1,14 @@
 package com.ciandt.jokenpochallengeebac.presentation.result
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.ciandt.jokenpochallengeebac.databinding.FragmentResultBinding
+import com.ciandt.jokenpochallengeebac.presentation.playselectionscreen.TAG
 import com.google.android.material.navigation.NavigationView
 
 class ResultFragment : Fragment() {
@@ -23,5 +25,32 @@ class ResultFragment : Fragment() {
 
 
         return binding.root
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG,"Passou pelo estado de resume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG,"Passou pelo estado de pause")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG,"Passou pelo estado de Stop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG,"Passou pelo estado de Destroy")
+
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i(TAG,"Passou pelo estado de Create")
+
     }
 }

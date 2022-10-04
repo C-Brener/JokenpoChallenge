@@ -1,6 +1,7 @@
 package com.ciandt.jokenpochallengeebac.presentation.playselectionscreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import com.ciandt.jokenpochallengeebac.R
 import com.ciandt.jokenpochallengeebac.databinding.FragmentPlaySelectionScreenBinding
 import com.google.android.material.navigation.NavigationView
 
+
+const val TAG = "LifeCycle"
 class PlaySelectionFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navDrawerLayout: NavigationView
@@ -22,7 +25,7 @@ class PlaySelectionFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPlaySelectionScreenBinding.inflate(inflater,container,false)
+        _binding = FragmentPlaySelectionScreenBinding.inflate(inflater, container, false)
 
         spinner()
         return binding.root
@@ -40,4 +43,31 @@ class PlaySelectionFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG,"Passou pelo estado de resume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG,"Passou pelo estado de pause")
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG,"Passou pelo estado de Stop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG,"Passou pelo estado de Destroy")
+
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i(TAG,"Passou pelo estado de Create")
+
+    }
 }
