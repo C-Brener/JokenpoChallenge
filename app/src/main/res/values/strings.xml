@@ -10,8 +10,7 @@
     <string name="result">RESULTADO</string>
     <string name="o_jogador_xxx">O jogador xxx \n ganhou</string>
     <string name="home">Home</string>
-    <string-array name="jogadas">
-        <item>Selecionar Jogada</item>
+    <string-array name="available_plays_array">
         <item>Pedra</item>
         <item>Papel</item>
         <item>Tesoura</item>

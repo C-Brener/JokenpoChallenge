@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.1" />
+        <entry key="../../../Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/drawable/bottom_navigation_style.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/style.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10326086956521739" />
