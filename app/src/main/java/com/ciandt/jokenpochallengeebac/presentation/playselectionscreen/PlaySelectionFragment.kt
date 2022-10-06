@@ -1,5 +1,6 @@
 package com.ciandt.jokenpochallengeebac.presentation.playselectionscreen
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.ciandt.jokenpochallengeebac.R
@@ -17,12 +17,22 @@ import com.google.android.material.navigation.NavigationView
 
 
 const val TAG = "LifeCycle"
-class PlaySelectionFragment : Fragment(), AdapterView.OnItemSelectedListener {
+
+class PlaySelectionFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var selectPlay: Spinner
     private lateinit var navDrawerLayout: NavigationView
+    private lateinit var onItemSelectedListener: AdapterView.OnItemSelectedListener
     private var _binding: FragmentPlaySelectionScreenBinding? = null
     private val binding get() = _binding!!
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        onItemSelectedListener = context as AdapterView.OnItemSelectedListener
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,17 +48,6 @@ class PlaySelectionFragment : Fragment(), AdapterView.OnItemSelectedListener {
         setupSelectPlaySpinner()
     }
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        val plays = resources.getStringArray(R.array.available_plays_array)
-        val selectedPlay = plays[p2]
-
-        Toast.makeText(requireContext(), selectedPlay,Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("Not yet implemented")
-    }
-
     private fun setupSelectPlaySpinner() {
         selectPlay = binding.spinner
         ArrayAdapter.createFromResource(
@@ -58,7 +57,7 @@ class PlaySelectionFragment : Fragment(), AdapterView.OnItemSelectedListener {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             selectPlay.adapter = adapter
-            selectPlay.onItemSelectedListener = this
+            selectPlay.onItemSelectedListener = onItemSelectedListener
         }
     }
 

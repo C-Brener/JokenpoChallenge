@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,12 +18,13 @@ import com.ciandt.jokenpochallengeebac.databinding.ActivityMainBinding
 import com.ciandt.jokenpochallengeebac.presentation.playselectionscreen.TAG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bottomNavigationView: BottomNavigationView
+    var currentPlayer: String = "Pedra"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -98,14 +102,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        Log.i(TAG,"Passou pelo estado de Stop")
+        Log.i(TAG, "Passou pelo estado de Stop")
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i(TAG,"Passou pelo estado de Destroy")
+        Log.i(TAG, "Passou pelo estado de Destroy")
 
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        val availablePlays = resources.getStringArray(R.array.available_plays_array)
+        currentPlayer =  availablePlays[p2]
+
+        Toast.makeText(this,"$currentPlayer",Toast.LENGTH_SHORT).show()
+
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 
 }
