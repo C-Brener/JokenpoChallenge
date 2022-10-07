@@ -8,7 +8,7 @@
     <string name="jogador_1">Jogador 1</string>
     <string name="resulted">Resulted</string>
     <string name="result">RESULTADO</string>
-    <string name="o_jogador_xxx">O jogador xxx \n ganhou</string>
+    <string name="result_palyer_game">O jogador %s \n ganhou</string>
     <string name="home">Home</string>
     <string-array name="available_plays_array">
         <item>Pedra</item>

@@ -2,12 +2,10 @@ package com.ciandt.jokenpochallengeebac
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,7 +13,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.ciandt.jokenpochallengeebac.databinding.ActivityMainBinding
-import com.ciandt.jokenpochallengeebac.presentation.playselectionscreen.TAG
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -41,6 +38,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun setDrawerLayoutNavigationController() {
         val drawerLayout = binding.navigationView
         drawerLayout.setupWithNavController(navController)
+        drawerLayout.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.resultFragment ->{
+                    val args = Bundle()
+                    args.putString("currentPlay", currentPlayer)
+                    navController.navigate(it.itemId, args)
+                }
+                else -> navController.navigate(it.itemId)
+            }
+            true
+        }
     }
 
     private fun setupActionBar() {
@@ -58,6 +66,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun setBottomNavigationController() {
         bottomNavigationView = binding.bottomNavigation
         bottomNavigationView.setupWithNavController(navController)
+        bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.resultFragment ->{
+                    val args = Bundle()
+                    args.putString("currentPlay", currentPlayer)
+                    navController.navigate(it.itemId, args)
+                }
+                else -> navController.navigate(it.itemId)
+            }
+            true
+        }
     }
 
     private fun setupNavigationComponent() {
@@ -89,34 +108,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         outState.putString("State","Texto")
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.i(TAG,"Passou pelo estado de resume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i(TAG,"Passou pelo estado de pause")
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i(TAG, "Passou pelo estado de Stop")
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(TAG, "Passou pelo estado de Destroy")
-
-    }
-
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         val availablePlays = resources.getStringArray(R.array.available_plays_array)
         currentPlayer =  availablePlays[p2]
 
-        Toast.makeText(this,"$currentPlayer",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, currentPlayer,Toast.LENGTH_SHORT).show()
 
     }
 
